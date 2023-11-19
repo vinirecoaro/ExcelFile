@@ -13,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btGenerate.setOnClickListener {
-
+            val xlsModelList : List<XlsModel> = ArrayList()
+            xlsModelList.ad
         }
 
     }
