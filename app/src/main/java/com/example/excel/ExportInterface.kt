@@ -29,6 +29,41 @@ interface ExportInterface {
             var cell : Cell
             var rowIndex = 0
 
+            if(!otherValueMap.isEmpty() && !otherValueMap.keys.isEmpty()){
+                var keys : Set<String> = otherValueMap.keys
+                var i = 0
+                var limit = 0
+                var row : Row = sheet.createRow(rowIndex)
+                for(one in keys){
+                    if(otherValueMap.containsKey(one)){
+                        if(limit == otherRowItemCount){
+                            ++rowIndex
+                            i = 0
+                            limit = 0
+                        }else{
+                            if(i != 0){
+                                ++i
+                                cell = row.createCell(i)
+                                cell.setCellValue("")
+                            }
+                        }
+                        cell = row.createCell(i)
+                        cell.setCellValue(one)
+                        i++
+
+                        cell = row.createCell(i)
+                        cell.setCellValue(otherValueMap.get(one))
+                        ++i
+                        ++limit
+                    }
+                }
+                ++rowIndex
+                sheet.createRow(rowIndex)
+                ++rowIndex
+            }
+
+
+
             val row : Row = sheet.createRow(rowIndex)
 
             ++rowIndex
